@@ -1,22 +1,19 @@
 console.log('Practice 01 - Chapter 01');
 
 const TAX_RATE = 0.03;
-const PHONE_PRICE = 500;
-const ACCESSORY_PRICE = 15;
-const SPENDING_THRESHOLD = 5000;
+const PHONE_PRICE = 110.50;
+const ACCESSORY_PRICE = 12.40;
+const SPENDING_THRESHOLD = 300;
 
-let bankAccountBalance = prompt('Informe o saldo da sua conta bancária:');
-let purchase = 0;
+let bankAccountBalance = prompt('Type your bank account balance:');
 let purchasePrice = 0;
 
-while (purchasePrice <= bankAccountBalance) {
-    purchase = purchase + 1;
+while (purchasePrice < bankAccountBalance) {
     purchasePrice = purchasePrice + PHONE_PRICE;
-    //bankAccountBalance = bankAccountBalance - purchasePrice;
-}
 
-if (purchasePrice + purchase*ACCESSORY_PRICE < SPENDING_THRESHOLD) {
-    purchasePrice = purchasePrice + purchase*ACCESSORY_PRICE;
+    if (purchasePrice < SPENDING_THRESHOLD) {
+        purchasePrice = purchasePrice + ACCESSORY_PRICE;
+    }
 }
 
 function calculateTaxes(amount) {
@@ -34,7 +31,7 @@ function formatFinalAmount(amount) {
 formatFinalAmount(calculateTaxes(purchasePrice));
 
 if (purchasePrice <= bankAccountBalance) {
-    console.log('Tenho dinheiro suficiente para comprar.');
+    console.log('You can afford this purchase.');
 } else {
-    console.log('Não tenho dinheiro suficiente para comprar.');
+    console.log('You can not afford this purchase.');
 }
